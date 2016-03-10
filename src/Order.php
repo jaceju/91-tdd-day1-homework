@@ -29,4 +29,12 @@ class Order
 
         return $total;
     }
+
+    /**
+     * @return array
+     */
+    public function getItems()
+    {
+        return $this->items;
+    }
 }
