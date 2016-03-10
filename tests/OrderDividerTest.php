@@ -48,4 +48,23 @@ class OrderDividerTest extends PHPUnit_Framework_TestCase
         // assert
         $this->assertEquals($expectedCosts, $actualCosts);
     }
+
+    /**
+     * @test
+     */
+    public function it_should_get_sum_of_revenue_from_grouped_shippable_orders_that_divided_by_4()
+    {
+        // arrange
+        $originalOrder = $this->prepareOriginalOrder();
+        $divisor = 4;
+        $expectedCosts = [50, 66, 60,];
+
+        // act
+        $orderDivider = new OrderDivider(new DividedByNum($divisor));
+        $orderCollection = $orderDivider->splitOrder($originalOrder);
+        $actualCosts = $orderCollection->getSumList('Revenue');
+
+        // assert
+        $this->assertEquals($expectedCosts, $actualCosts);
+    }
 }
