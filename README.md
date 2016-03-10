@@ -25,3 +25,9 @@
 不過這樣的定義從實務方面去考量的話，就不見得合乎真正的商業邏輯；也有可能其實不是 91 哥這個需求的原意，必須再跟他進行確認。只是這個作業是要我們自行去定義需求給 developer ，所以我就用自己過往的經驗來試著定義它了。
 
 「可能會有新的欄位，也可能需要針對新的欄位做加總。」這是未來的需求，這裡就是在思考架構時要考慮的，同時也要反應在程式介面的可擴充性上。
+
+## 程式說明
+
+* `tests/OrderDividerTest.php` - 整合測試，即作業要求的主要測試案例。
+* `tests/OrderTest` - 單元測試，包含 `Order` 及 `OrderItem` 。
+* `tests/OrderCollectionTest` - 單元測試，包含 `OrderCollection` 、 `Order` 及 `OrderItem` 。
