@@ -57,14 +57,14 @@ class OrderDividerTest extends PHPUnit_Framework_TestCase
         // arrange
         $originalOrder = $this->prepareOriginalOrder();
         $divisor = 4;
-        $expectedCosts = [50, 66, 60,];
+        $expectedRevenues = [50, 66, 60,];
 
         // act
         $orderDivider = new OrderDivider(new DividedByNum($divisor));
         $orderCollection = $orderDivider->splitOrder($originalOrder);
-        $actualCosts = $orderCollection->getSumList('Revenue');
+        $actualRevenues = $orderCollection->getSumList('Revenue');
 
         // assert
-        $this->assertEquals($expectedCosts, $actualCosts);
+        $this->assertEquals($expectedRevenues, $actualRevenues);
     }
 }
