@@ -28,18 +28,26 @@ class OrderDividerTest extends PHPUnit_Framework_TestCase
         ]);
     }
 
+    public function provider()
+    {
+        return [
+            [3, 'Cost', [6, 15, 24, 21,],],
+            [4, 'Revenue', [50, 66, 60,],],
+        ];
+    }
 
     /**
      * @test
+     * @dataProvider provider
      * @group integration
+     * @param $divisor
+     * @param $column
+     * @param $expectedCosts
      */
-    public function it_should_get_sum_of_cost_from_grouped_shippable_orders_that_divided_by_number()
+    public function it_should_get_sum_list_from_grouped_shippable_orders_that_divided_by_number($divisor, $column, $expectedCosts)
     {
         // arrange
         $originalOrder = $this->prepareOriginalOrder();
-        $divisor = 3;
-        $column = 'Cost';
-        $expectedCosts = [6, 15, 24, 21,];
 
         // act
         $orderDivider = new OrderDivider(new DividedByNum($divisor));
@@ -48,25 +56,5 @@ class OrderDividerTest extends PHPUnit_Framework_TestCase
 
         // assert
         $this->assertEquals($expectedCosts, $actualCosts);
-    }
-
-    /**
-     * @test
-     */
-    public function it_should_get_sum_of_revenue_from_grouped_shippable_orders_that_divided_by_4()
-    {
-        // arrange
-        $originalOrder = $this->prepareOriginalOrder();
-        $divisor = 4;
-        $column = 'Revenue';
-        $expectedRevenues = [50, 66, 60,];
-
-        // act
-        $orderDivider = new OrderDivider(new DividedByNum($divisor));
-        $orderCollection = $orderDivider->splitOrder($originalOrder);
-        $actualRevenues = $orderCollection->getSumList($column);
-
-        // assert
-        $this->assertEquals($expectedRevenues, $actualRevenues);
     }
 }
