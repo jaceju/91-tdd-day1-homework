@@ -7,10 +7,6 @@ use App\OrderDivider;
 
 class OrderDividerTest extends PHPUnit_Framework_TestCase
 {
-    public function testSkip()
-    {
-    }
-
     protected function prepareOriginalOrder()
     {
         return new Order([
