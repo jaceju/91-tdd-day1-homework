@@ -27,8 +27,16 @@ class OrderDividerTest extends PHPUnit_Framework_TestCase
     public function provider()
     {
         return [
-            [3, 'Cost', [6, 15, 24, 21,],],
-            [4, 'Revenue', [50, 66, 60,],],
+            [
+                /* Divided by */ 3,
+                /* with Column */ 'Cost',
+                /* should get List of Sum */ [6, 15, 24, 21,],
+            ],
+            [
+                /* Divided by */ 4,
+                /* with Column */ 'Revenue',
+                /* should get List of Sum */ [50, 66, 60,],
+            ],
         ];
     }
 
